@@ -1,6 +1,6 @@
 pragma solidity >=0.4.21 <0.6.2;
 
-contract Hospital {
+contract MedRecords {
 
     constructor() public {
         placeHolderTest = "11111111111111111111";
