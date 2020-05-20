@@ -1,0 +1,30 @@
+{
+  "name": "blockchain-for-medical-records",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Farhad1234/Blockchain-for-Medical-Records.git"
+  },
+  "author": "Dhairya Jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Farhad1234/Blockchain-for-Medical-Records/issues"
+  },
+  "homepage": "https://github.com/Farhad1234/Blockchain-for-Medical-Records#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.3"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
+}
