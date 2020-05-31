@@ -10,13 +10,15 @@ class Main extends Component {
             event.preventDefault()
             console.log("Daba")
             const name1 = this.patientName.value
+            const phone1 = this.patientPhone.value
+            const patientAddress1 = this.patientAddress.value
             //   const price = window.web3.utils.toWei(this.productPrice.value.toString(), 'Ether')
-            const cost1 = this.patientCost.value
-            const procedure1 = this.patientProcedure.value
-            const hospId1 = this.patientHospId.value
-            const owner1 = this.props.accountSet.toString()
-            const docName1 = this.patientDocName.value
-            const treated1 = true;
+            // const cost1 = this.patientCost.value
+            // const procedure1 = this.patientProcedure.value
+            // const hospId1 = this.patientHospId.value
+            // const owner1 = this.props.accountSet.toString()
+            // const docName1 = this.patientDocName.value
+            // const treated1 = true;
             // console.log(name, cost, procedure, hospId, docName, treated)
             // this.props.createPatient(name, cost, procedure, hospId, docName, treated)
 
@@ -44,7 +46,25 @@ class Main extends Component {
                 placeholder="Patient Name"
                 required />
             </div>
-            <div  className="row" >
+            <div className="row" >
+                <input
+                id="patientPhone"
+                type="text"
+                ref={(input) => { this.patientPhone = input }}
+                className="form-control"
+                placeholder="Patient Phone"
+                required />
+            </div>
+            <div className="row" >
+                <input
+                id="patientAddress"
+                type="text"
+                ref={(input) => { this.patientAddress = input }}
+                className="form-control"
+                placeholder="Patient Address"
+                required />
+            </div>
+            {/* <div  className="row" >
                 <input
                 id="patientCost"
                 type="text"
@@ -81,7 +101,7 @@ class Main extends Component {
                 className="form-control"
                 placeholder="Doctor Name"
                 required />
-           </div>
+           </div> */}
            {/* this.props.products.map((product, key) => {
               // return( */}
 
@@ -107,26 +127,28 @@ class Main extends Component {
 
                 console.log("Daba")
                 const name1 = this.patientName.value
+                const phone1 = this.patientPhone.value
+                const patientAddress1 = this.patientAddress.value
                 //   const price = window.web3.utils.toWei(this.productPrice.value.toString(), 'Ether')
-                const cost1 = this.patientCost.value
-                const procedure1 = this.patientProcedure.value
-                const hospId1 = this.patientHospId.value
-                const owner1 = this.props.accountSet.toString()
-                const docName1 = this.patientDocName.value
-                const treated1 = true;
+                // const cost1 = this.patientCost.value
+                // const procedure1 = this.patientProcedure.value
+                // const hospId1 = this.patientHospId.value
+                // const owner1 = this.props.accountSet.toString()
+                // const docName1 = this.patientDocName.value
+                // const treated1 = true;
                 // console.log(name, cost, procedure, hospId, docName, treated)
-                // this.props.createPatient(name, cost, procedure, hospId, docName, treated)
+                this.props.createPatient(name1, phone1, patientAddress1)
     
-                const requestOptions = {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*", "mode": "no-cors" },
-                  body: JSON.stringify({ name: name1, cost:cost1, procedure:procedure1, owner:owner1, hospId:hospId1, docName:docName1, treated:treated1 })
-                  // body: "name:1234"
-                };
-              fetch('http://localhost:3002/add-patient', requestOptions)
-                  .then(response => console.log(response))
-                  .then(data => console.log(data))
-                  .catch(err => console.log(err) )
+              //   const requestOptions = {
+              //     method: 'POST',
+              //     headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*", "mode": "no-cors" },
+              //     body: JSON.stringify({ name: name1, cost:cost1, procedure:procedure1, owner:owner1, hospId:hospId1, docName:docName1, treated:treated1 })
+              //     // body: "name:1234"
+              //   };
+              // fetch('http://localhost:3002/add-patient', requestOptions)
+              //     .then(response => console.log(response))
+              //     .then(data => console.log(data))
+              //     .catch(err => console.log(err) )
                 
                 
                 }}
@@ -136,6 +158,7 @@ class Main extends Component {
 
        <p>&nbsp;&nbsp;</p>
         <h2>Patient List</h2>
+        <button onClick={() => {this.props.loadRecordsPage()}}>Show Records</button> 
         <table className="table">
           <thead>
             <tr>

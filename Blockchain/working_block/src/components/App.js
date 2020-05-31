@@ -3,6 +3,7 @@ import Web3 from 'web3'
 import './App.css';
 import Container from '../abis/container.json'
 import Main from './main'
+import Record from './record'
 import './photon-0.1.2-alpha/dist/css/photon.css'
 class App extends Component {
 
@@ -18,6 +19,8 @@ class App extends Component {
       account: '',
       patientCount: 0,
       patients: [],
+      loadPatients: true,
+      loadRecords: false
       // loading: true
     }
 
@@ -43,6 +46,7 @@ class App extends Component {
   }
 
   async loadBlockchainData() {
+    console.log("loading data")
     const web3 = await window.web3
     console.log(web3)
     const accounts = await web3.eth.getAccounts()
@@ -56,7 +60,7 @@ class App extends Component {
       const container = web3.eth.Contract(Container.abi, networkData.address)
       this.setState({ container })
       const patientCount = await container.methods.patientCount().call()
-      console.log(patientCount.toString())
+      // console.log(patientCount.toString())
       // this.setState({ loading: false})
       this.setState({ patientCount })
 
@@ -99,6 +103,22 @@ class App extends Component {
     console.log("Added")
   }
 
+  loadPatientsPage = () => {
+    this.setState({
+      ...this.state,
+      loadPatients: true,
+      loadRecords: false
+    })
+  }
+
+  loadRecordsPage = () => {
+    this.setState({
+      ...this.state,
+      loadPatients: false,
+      loadRecords: true
+    })
+  }
+
 
   render() {
     return (
@@ -108,12 +128,21 @@ class App extends Component {
         <h1 className="title">SECURING MEDICAL RECORDS FOR INSURANCE CLAIM USING BLOCKCHAIN</h1>
       </header>
         <div className="window-content">
-          <div className="row">
-          <Main
+          {this.state.loadPatients && <div className="row">
+              <Main
                   patients={this.state.patients}
                   createPatient={this.createPatient}
-                  accountSet = {this.state.account}/>
-          </div>
+                  accountSet = {this.state.account}
+                  loadRecordsPage = {this.loadRecordsPage}/>
+          </div> }
+
+          {this.state.loadRecords && <div className="row">
+              <Record 
+                  createRecord={this.createRecord}
+                  accountSet = {this.state.account}
+                  loadPatientsPage = {this.loadPatientsPage}/>
+          </div> }
+
       </div>
 
         <footer className="toolbar toolbar-footer">
