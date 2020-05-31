@@ -146,7 +146,7 @@ class Record extends Component {
            
               </tr>
             </thead>
-            <tbody id="patientList"> }
+            <tbody id="patientList">
               { 
                 this.props.patients.map((patient, key) => {
                 console.log("Current  ",this.props.accountSet.toString())
@@ -155,7 +155,8 @@ class Record extends Component {
                 console.log("patient name",patient.name)
                 // if(this.props.accountSet.toString() == patient.owner.toString() )
                 return(
-                  <tr key={key}>
+                  patient.numRecords > 0 && (this.props.accountSet.toString() == patient.owner.toString() || this.props.accountSet.toString() == patient.uploader.toString()) &&
+                  <tr key={this.props.id}>
                     <th scope="row">{patient.pId.toString()}</th>
                     <td>{patient.name}</td>
                     <td>{patient.cost.toString()}</td>
@@ -171,7 +172,7 @@ class Record extends Component {
               }
               )}
             </tbody>
-          </table>}
+          </table>
        </div>
    
       );

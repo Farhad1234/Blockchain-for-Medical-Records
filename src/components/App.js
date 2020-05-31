@@ -4,7 +4,7 @@ import './App.css';
 import MedRecords from '../abis/MedRecords.json'
 import Main from './main'
 import Record from './record'
-import './photon-0.1.2-alpha/dist/css/photon.css'
+// import './photon-0.1.2-alpha/dist/css/photon.css'
 class App extends Component {
 
   async componentWillMount() {

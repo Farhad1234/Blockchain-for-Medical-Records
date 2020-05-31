@@ -118,7 +118,7 @@ class Main extends Component {
               { this.props.patients.map((patient, key) => {
               console.log("Current  ",this.props.accountSet.toString())
               console.log("Ofrecord  ",patient.owner.toString())
-              if(this.props.accountSet.toString() == patient.owner.toString())   // or if in registered hospitals
+              // if(this.props.accountSet.toString() == patient.owner.toString() || this.props.accountSet.toString() == patient.uploader.toString())   // or if in registered hospitals
               // console.log("PID",patient.pId.toString())
               return(
                 <tr key={key}>
